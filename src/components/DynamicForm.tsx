@@ -8,12 +8,13 @@ interface Props {
     index: number,
     event: ChangeEvent<HTMLInputElement>
   ) => void;
+  handleDelete: (id: number) => void;
 }
-function DynamicForm({ formFields, handleFieldChange }: Props) {
+function DynamicForm({ formFields, handleFieldChange, handleDelete }: Props) {
   return (
-    <form className="border border-black p-5 rounded-2xl">
+    <form className="p-5">
       {formFields.map((field, index) => (
-        <div className="py-3">
+        <div className="py-3 flex items-center">
           <Input
             name="name"
             placeholder="Field Name"
@@ -27,6 +28,12 @@ function DynamicForm({ formFields, handleFieldChange }: Props) {
             value={field.value}
             onChange={(e) => handleFieldChange(index, e)}
           />
+          <div
+            onClick={() => handleDelete(field.id)}
+            className="ml-5 cursor-pointer font-bold"
+          >
+            X
+          </div>
         </div>
       ))}
     </form>

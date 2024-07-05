@@ -3,7 +3,7 @@ interface ButtonProps {
   text: string;
   className?: string;
   onClick: () => void;
-  disabled: boolean;
+  disabled?: boolean;
 }
 function Button({ text, className, onClick, disabled }: ButtonProps) {
   return (
